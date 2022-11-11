@@ -5,7 +5,6 @@ const numbers = "0123456789";
 const symbols = "!@#$%^&*()|{}[]<>?~+-_=:;";
 
 var generateBtn = document.querySelector("#generate");
-// Write password to the #password input
 function writePassword() {
 
   var passwordLength = getPassLen();
@@ -22,11 +21,12 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function getPassLen() {
-  var passLen = prompt("what is the length of the password? It should be betweeen 8 and 128 characters:");
+  var passLenInput = prompt("what is the length of the password? It should be betweeen 8 and 128 characters:");
 
-  while (passLen < 8 || passLen > 128) {
-    passLen = prompt("what is the length of the password? It should be betweeen 8 and 128 characters:");
-    console.log("wrong pass" + passLen);
+  var passLen = Number(passLenInput);
+  
+  while (isNaN(passLen) || passLen < 8 || passLen > 128) {
+    passLen = prompt("Enter a valid length of the password. It should be a number and betweeen 8 and 128 characters:");    
   }
   return passLen;
 
